@@ -38,6 +38,26 @@ module.exports = appInfo => {
     allowMethods:'GET, PUT, POST, DELETE, PATCH'
   }
 
+  config.sequelize = {
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    username:'root',
+    password:'root',
+    port: 3306,
+    database: 'eggapi',
+    //中国时区
+    timezone:'+08:00',
+    define:{
+      freezeTableName:true,
+      //自动写入时间戳
+      timestamps:true,
+      createdAt:'created_at',
+      updatedAt:'updated_at',
+      // 驼峰命名
+      underscored:true
+    }
+  };
+
   return {
     ...config,
     ...userConfig,
