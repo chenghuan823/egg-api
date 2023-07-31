@@ -16,7 +16,11 @@ class UserController extends Controller {
           [Op.like]:"%冯%"
         }
       },
-      attributes:['id','username','sex']
+      // attributes:['id','username','sex']
+      attributes:{
+        //排除
+        exclude:['password']
+      }
     })
     // list?page=1&status=2
     // ctx.query.page ctx.query.status
