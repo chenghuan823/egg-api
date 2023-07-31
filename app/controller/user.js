@@ -135,7 +135,11 @@ class UserController extends Controller {
       }
     }
     data.username='柯南'
-    let res=await data.save({fields:['username']})
+    // let res=await data.save({fields:['username']})
+    let params=this.ctx.request.body
+    let res=await data.update(params,{
+      fields:['username']
+    })
     ctx.body={
       msg:'success',
       data:res
