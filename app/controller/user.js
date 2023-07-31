@@ -270,32 +270,32 @@ class UserController extends Controller {
 
     let res=await app.model.Users.bulkCreate([
       {
-        username:'冯伟红',
+        username:'冯伟红1',
         password:'123456',
         sex:'女',
       },
       {
-        username:'程伟明',
+        username:'程伟明1',
         password:'123456',
         sex:'男',
       },
       {
-        username:'冯伟华',
+        username:'冯伟华1',
         password:'123456',
         sex:'男',
       },
       {
-        username:'程焕天',
+        username:'程焕天1',
         password:'123456',
         sex:'男',
       },
       {
-        username:'程斌斌',
+        username:'程斌斌1',
         password:'123456',
         sex:'男',
       },
       {
-        username:'张苗苗',
+        username:'张苗苗1',
         password:'123456',
         sex:'女',
       },

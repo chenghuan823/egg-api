@@ -18,7 +18,11 @@ module.exports = (app) => {
    password:{
      type:STRING(200),
      allowNull:false,
-     defaultValue:''
+     defaultValue:'',
+     set(val){
+      let hash=val+'---'
+      this.setDataValue('password',hash)
+     }
    },
    avatar_url:{
      type:STRING(200),
