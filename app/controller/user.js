@@ -8,9 +8,12 @@ class UserController extends Controller {
     const {ctx,app}=this
     let result=[]
     //查询多个
-    result=await app.model.Users.findAll()
+    // result=await app.model.Users.findAll()
     // list?page=1&status=2
     // ctx.query.page ctx.query.status
+
+    //查询多个并统计
+    result=await app.model.Users.findAndCountAll()
 
     ctx.body={
       msg:'ok',
