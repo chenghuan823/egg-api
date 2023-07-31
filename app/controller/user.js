@@ -15,7 +15,8 @@ class UserController extends Controller {
         username:{
           [Op.like]:"%冯%"
         }
-      }
+      },
+      attributes:['id','username','sex']
     })
     // list?page=1&status=2
     // ctx.query.page ctx.query.status
