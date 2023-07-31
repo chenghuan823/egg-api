@@ -122,7 +122,25 @@ class UserController extends Controller {
     //   data:detail
     // }
   }
-
+  //4 更新
+  async update(){
+    let {ctx}=this
+    let id=ctx.params.id?parseInt(ctx.params.id):0
+    //先拿到这条记录
+    let data=await ctx.model.Users.findByPk(id)
+    if(!data){
+      return ctx.body={
+        msg:'fail',
+        data:'该记录不存在'
+      }
+    }
+    data.username='柯南'
+    let res=await data.save({fields:['username']})
+    ctx.body={
+      msg:'success',
+      data:res
+    }
+  }
 }
 
 module.exports = UserController;
