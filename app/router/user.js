@@ -4,5 +4,6 @@ module.exports = app => {
   router.get('/user/read/:id', controller.user.read);
   router.post('/user/create', controller.user.create);
   router.post('/user/update/:id', controller.user.update);
+  router.post('/user/delete/:id', controller.user.destroy);
 
 };

@@ -145,6 +145,23 @@ class UserController extends Controller {
       data:res
     }
   }
+  //删除
+  async destroy(){
+    let {ctx}=this
+    let id=ctx.params.id?parseInt(ctx.params.id):0;
+    let data=await ctx.model.Users.findByPk(id);
+    if(!data){
+      return ctx.body={
+        msg:'fail',
+        data:'该记录不存在'
+      }
+    }
+    let res=await data.destroy();
+    ctx.body={
+      msg:'ok',
+      data:res
+    }
+  }
 }
 
 module.exports = UserController;
