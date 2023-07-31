@@ -260,16 +260,23 @@ class UserController extends Controller {
 
   //3 创建用户
   async create() {
-    const {ctx}=this
+    const {ctx,app}=this
+    let res=await app.model.Users.create({
+      username:'程欢',
+      password:'123456',
+      sex:'男',
+
+    })
     
-    console.log(ctx.request.body);
+    ctx.body=res
+    // console.log(ctx.request.body);
     //拿到路由参数
-    let id=ctx.params.id
-    let detail=demo.find(item=>item.id==id)
-    ctx.body={
-      msg:'ok',
-      data:detail
-    }
+    // let id=ctx.params.id
+    // let detail=demo.find(item=>item.id==id)
+    // ctx.body={
+    //   msg:'ok',
+    //   data:detail
+    // }
   }
 
 }
