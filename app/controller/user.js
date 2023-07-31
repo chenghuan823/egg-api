@@ -261,6 +261,8 @@ class UserController extends Controller {
   //3 创建用户
   async create() {
     const {ctx}=this
+    
+    console.log(ctx.request.body);
     //拿到路由参数
     let id=ctx.params.id
     let detail=demo.find(item=>item.id==id)
