@@ -238,6 +238,9 @@ class UserController extends Controller {
   async index() {
     const {ctx}=this
     let result=demo
+    // list?page=1&status=2
+    // ctx.query.page ctx.query.status
+
     ctx.body={
       msg:'ok',
       data:result
