@@ -234,7 +234,7 @@ let demo=[
   }
 ]
 class UserController extends Controller {
-  //用户列表
+  //1 用户列表
   async index() {
     const {ctx}=this
     let result=demo
@@ -246,7 +246,7 @@ class UserController extends Controller {
       data:result
     }
   }
-  //获取用户信息
+  //2 获取用户信息
   async read() {
     const {ctx}=this
     //拿到路由参数
@@ -257,6 +257,19 @@ class UserController extends Controller {
       data:detail
     }
   }
+
+  //3 创建用户
+  async create() {
+    const {ctx}=this
+    //拿到路由参数
+    let id=ctx.params.id
+    let detail=demo.find(item=>item.id==id)
+    ctx.body={
+      msg:'ok',
+      data:detail
+    }
+  }
+
 }
 
 module.exports = UserController;
