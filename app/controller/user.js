@@ -6,11 +6,15 @@ class UserController extends Controller {
   //1 用户列表
   async index() {
     const {ctx,app}=this
+    let result=[]
+    //查询多个
+    result=await app.model.Users.findAll()
     // list?page=1&status=2
     // ctx.query.page ctx.query.status
 
     ctx.body={
       msg:'ok',
+      data:result
     }
   }
   //2 获取用户信息
