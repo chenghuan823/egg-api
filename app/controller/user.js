@@ -7,11 +7,14 @@ class UserController extends Controller {
   async index() {
     const {ctx,app}=this
     let result=[]
+    let page=ctx.query.page ? parseInt(ctx.query.page) :1
+    let limit=5
+    let offset=(page-1)*5
     let Op=app.Sequelize.Op
     //查询多个
     result=await app.model.Users.findAll({
       where:{
-        sex:'女',
+        // sex:'女',
         // username:{
         //   [Op.like]:"%冯%"
         // }
@@ -24,7 +27,9 @@ class UserController extends Controller {
       order:[
         ['id','DESC'],
         ['updated_at','DESC']
-      ]
+      ],
+      offset,
+      limit
     })
     // list?page=1&status=2
     // ctx.query.page ctx.query.status
@@ -76,32 +81,32 @@ class UserController extends Controller {
 
     let res=await app.model.Users.bulkCreate([
       {
-        username:'冯伟红1',
+        username:'冯伟红2',
         password:'123456',
         sex:'女',
       },
       {
-        username:'程伟明1',
+        username:'程伟明2',
         password:'123456',
         sex:'男',
       },
       {
-        username:'冯伟华1',
+        username:'冯伟华2',
         password:'123456',
         sex:'男',
       },
       {
-        username:'程焕天1',
+        username:'程焕天2',
         password:'123456',
         sex:'男',
       },
       {
-        username:'程斌斌1',
+        username:'程斌斌2',
         password:'123456',
         sex:'男',
       },
       {
-        username:'张苗苗1',
+        username:'张苗苗2',
         password:'123456',
         sex:'女',
       },
