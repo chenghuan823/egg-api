@@ -261,12 +261,45 @@ class UserController extends Controller {
   //3 创建用户
   async create() {
     const {ctx,app}=this
-    let res=await app.model.Users.create({
-      username:'程欢',
-      password:'123456',
-      sex:'男',
+    // let res=await app.model.Users.create({
+    //   username:'程欢',
+    //   password:'123456',
+    //   sex:'男',
 
-    })
+    // })
+
+    let res=await app.model.Users.bulkCreate([
+      {
+        username:'冯伟红',
+        password:'123456',
+        sex:'女',
+      },
+      {
+        username:'程伟明',
+        password:'123456',
+        sex:'男',
+      },
+      {
+        username:'冯伟华',
+        password:'123456',
+        sex:'男',
+      },
+      {
+        username:'程焕天',
+        password:'123456',
+        sex:'男',
+      },
+      {
+        username:'程斌斌',
+        password:'123456',
+        sex:'男',
+      },
+      {
+        username:'张苗苗',
+        password:'123456',
+        sex:'女',
+      },
+    ])
     
     ctx.body=res
     // console.log(ctx.request.body);
