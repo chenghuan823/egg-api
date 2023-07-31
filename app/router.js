@@ -10,4 +10,7 @@ module.exports = app => {
   router.get('/user/list', controller.user.index);
   router.get('/user/read/:id', controller.user.read);
   router.post('/user/create', controller.user.create);
+
+  router.resources('post','/api/post',controller.post)
 };
+ 
