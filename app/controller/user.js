@@ -12,15 +12,19 @@ class UserController extends Controller {
     result=await app.model.Users.findAll({
       where:{
         sex:'女',
-        username:{
-          [Op.like]:"%冯%"
-        }
+        // username:{
+        //   [Op.like]:"%冯%"
+        // }
       },
       // attributes:['id','username','sex']
       attributes:{
         //排除
         exclude:['password']
-      }
+      },
+      order:[
+        ['id','DESC'],
+        ['updated_at','DESC']
+      ]
     })
     // list?page=1&status=2
     // ctx.query.page ctx.query.status
