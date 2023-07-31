@@ -36,7 +36,13 @@ module.exports = (app) => {
      defaultValue:'男',
      comment:'用户性别',
    },
-    created_at: DATE,
+    created_at: {
+      type:DATE,
+      get(){
+        const val=this.getDataValue('created_at')
+        return (new Date(val)).getTime()
+      }
+    },
     updated_at: DATE,
   });
 
