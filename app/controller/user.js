@@ -7,6 +7,7 @@ class UserController extends Controller {
   async index() {
     const {ctx,app}=this
     let result=[]
+    ctx.throw(500,'故意出错')
     let page=ctx.query.page ? parseInt(ctx.query.page) :1
     let limit=5
     let offset=(page-1)*5
