@@ -18,6 +18,12 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = ['errorHandler'];
 
+  config.errorHandler={
+    // enable:false
+    // match:['/user/list','/user/read'],//只有符合规则的请求才会经过这个中间件（匹配路由）
+    // ignore:['/user/list']  其它都经过中间件
+  }
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
@@ -57,6 +63,11 @@ module.exports = appInfo => {
       underscored:true
     }
   };
+
+  config.valparams={
+    locale:'zh-cn',
+    throwError:true
+  }
 
   return {
     ...config,

@@ -7,7 +7,7 @@ class UserController extends Controller {
   async index() {
     const {ctx,app}=this
     let result=[]
-    ctx.throw(500,'故意出错')
+    // ctx.throw(500,'故意出错')
     let page=ctx.query.page ? parseInt(ctx.query.page) :1
     let limit=5
     let offset=(page-1)*5
@@ -73,6 +73,18 @@ class UserController extends Controller {
   //3 创建用户
   async create() {
     const {ctx,app}=this
+    let params=ctx.request.body
+
+    ctx.validate({
+      username:{type:'string',required:true,desc:'用户名'},
+      password:{type:'string',required:true,desc:'密码'},
+      sex:{type:'string',required:false,defValue:'男',desc:'性别'}
+    })
+
+    //参数验证
+
+    //写入有数据库
+    let res=await app.model.Users.create(params)
     // let res=await app.model.Users.create({
     //   username:'程欢',
     //   password:'123456',
@@ -80,40 +92,40 @@ class UserController extends Controller {
 
     // })
 
-    let res=await app.model.Users.bulkCreate([
-      {
-        username:'冯伟红2',
-        password:'123456',
-        sex:'女',
-      },
-      {
-        username:'程伟明2',
-        password:'123456',
-        sex:'男',
-      },
-      {
-        username:'冯伟华2',
-        password:'123456',
-        sex:'男',
-      },
-      {
-        username:'程焕天2',
-        password:'123456',
-        sex:'男',
-      },
-      {
-        username:'程斌斌2',
-        password:'123456',
-        sex:'男',
-      },
-      {
-        username:'张苗苗2',
-        password:'123456',
-        sex:'女',
-      },
-    ])
+    // let res=await app.model.Users.bulkCreate([
+    //   {
+    //     username:'冯伟红2',
+    //     password:'123456',
+    //     sex:'女',
+    //   },
+    //   {
+    //     username:'程伟明2',
+    //     password:'123456',
+    //     sex:'男',
+    //   },
+    //   {
+    //     username:'冯伟华2',
+    //     password:'123456',
+    //     sex:'男',
+    //   },
+    //   {
+    //     username:'程焕天2',
+    //     password:'123456',
+    //     sex:'男',
+    //   },
+    //   {
+    //     username:'程斌斌2',
+    //     password:'123456',
+    //     sex:'男',
+    //   },
+    //   {
+    //     username:'张苗苗2',
+    //     password:'123456',
+    //     sex:'女',
+    //   },
+    // ])
     
-    ctx.body=res
+    // ctx.body=res
     // console.log(ctx.request.body);
     //拿到路由参数
     // let id=ctx.params.id
